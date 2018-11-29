@@ -1,3 +1,11 @@
 page-home {
-
+    .background-bamboo {
+        background: url('../../assets/imgs/bamboo.jpg');
+    }
+    [col-12] {
+        text-align: center;
+    }
+    .icon {
+        font-size: 3.5em;
+    }
 }
