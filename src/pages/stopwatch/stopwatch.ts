@@ -1,12 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the StopwatchPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -15,11 +8,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StopwatchPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  date: Date;
+  laps: number = 0;
+
+  constructor() {}
+
+  format(ms) {
+    let minutes = Math.floor(ms / (1000 * 60));
+    let seconds = Math.floor((ms - minutes * 1000 * 60) / 1000);
+    let fract = Math.floor((ms - minutes * 1000 * 60 - seconds * 1000) / 10);
+
+    return minutes + ":" + (seconds < 10 ? '0' : '') + seconds + (fract < 10 ? '0' : '') + fract;
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad StopwatchPage');
+  startStopwatch() {
+    this.date = new Date(2000, 1, 1, 0, 0, 0);
+    setInterval(() => {
+      let min = this.date.getMinutes();
+      this.date.setMinutes(min + 1);
+    }, 1000);
   }
 
 }

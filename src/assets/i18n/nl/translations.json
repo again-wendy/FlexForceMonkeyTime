@@ -1,6 +1,10 @@
 {
+  "Close": "Sluiten",
   "Hello": "Hallo",
   "RegisterTime": "Registreer tijd",
+  "RegisterYourTime": "Registreer je tijd!",
+  "SetLanguage": "Kies taal",
   "VacationHours": "Vakantie uren",
+  "WithStopwatchRecordTime": "Je kunt je tijd registreren met deze stopwatch. Je hoeft hem alleen te starten wanneer je begint en te stoppen wanneer je klaar bent met werken!",
   "YourProfile": "Je profiel"
 }

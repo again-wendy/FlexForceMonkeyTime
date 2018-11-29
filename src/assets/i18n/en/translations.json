@@ -1,6 +1,10 @@
 {
+  "Close": "Close",
   "Hello": "Hello",
   "RegisterTime": "Register time",
+  "RegisterYourTime": "Register your time!",
+  "SetLanguage": "Set language",
   "VacationHours": "Vacation hours",
+  "WithStopwatchRecordTime": "With this stopwatch you can start recording your time. Just press start when you start working and stop it when you're done!",
   "YourProfile": "Your profile"
 }

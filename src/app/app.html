@@ -1,8 +1,15 @@
-<ion-menu [content]="menuItems">
+<ion-menu [content]="content">
     <ion-content>
         <ion-list>
-            <p>Test menu</p>
+            <ion-item menuClose>
+                <ion-icon name="close" item-start></ion-icon>
+                {{ 'Close' | translate }}
+            </ion-item>
+            <ion-item menuClose (click)="goToPage(item)" *ngFor="let item of menuPages">
+                <ion-icon [name]="item.icon" item-start></ion-icon>
+                {{item.title}}
+            </ion-item>
         </ion-list>
     </ion-content>
 </ion-menu>
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-nav [root]="rootPage" #content></ion-nav>

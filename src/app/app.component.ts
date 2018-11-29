@@ -1,18 +1,30 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { Platform, Nav } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginPage } from '../pages/login/login';
+//import { LoginPage } from '../pages/login/login';
 import { AuthProvider } from '../providers/auth/auth';
 import { HomePage } from '../pages/home/home';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
+import { StopwatchPage } from '../pages/stopwatch/stopwatch';
+import { RegisterTimePage } from '../pages/register-time/register-time';
+import { VacationHoursPage } from '../pages/vacation-hours/vacation-hours';
+import { ProfilePage } from '../pages/profile/profile';
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
+  @ViewChild(Nav) nav;
   rootPage:any = HomePage;
+
+  menuPages = [
+    {title: 'Stopwatch', icon: 'stopwatch', page: StopwatchPage},
+    {title: 'Register time', icon: 'time', page: RegisterTimePage},
+    {title: 'Vacation hours', icon: 'calendar', page: VacationHoursPage},
+    {title: 'Your profile', icon: 'cog', page: ProfilePage},
+  ]
 
   constructor(
     platform: Platform, 
@@ -45,5 +57,10 @@ export class MyApp {
       // }
     });
   }
+
+  goToPage(page) {
+    this.nav.push(page.page);
+  }
 }
+
 
