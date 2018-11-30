@@ -1,10 +1,20 @@
 {
+  "AddYourTime": "Voeg je tijd toe voor",
+  "Cancel": "Annuleren",
   "Close": "Sluiten",
+  "Continue": "Ga verder",
+  "DoneWorking": "Je hebt vandaag {{ hour }} uur en {{ minute }} minuten gewerkt. Wil je dit toevoegen aan een timesheet?",
   "Hello": "Hallo",
+  "No": "Nee",
+  "NoClearData": "Nee, verwijder gegevens",
+  "Pause": "Pauzeer",
   "RegisterTime": "Registreer tijd",
   "RegisterYourTime": "Registreer je tijd!",
   "SetLanguage": "Kies taal",
   "VacationHours": "Vakantie uren",
+  "ViewTimesheets": "Bekijk timesheets",
+  "WillDeleteTime": "Dit verwijdert je huidige tijd, weet je het zeker?",
   "WithStopwatchRecordTime": "Je kunt je tijd registreren met deze stopwatch. Je hoeft hem alleen te starten wanneer je begint en te stoppen wanneer je klaar bent met werken!",
+  "Yes": "Ja",
   "YourProfile": "Je profiel"
 }

@@ -1,10 +1,20 @@
 {
+  "AddYourTime": "Add your time for",
+  "Cancel": "Cancel",
   "Close": "Close",
+  "Continue": "Continue",
+  "DoneWorking": "You've worked {{ hour }} hours and {{ minute }} minutes. Do you want to add this to a timesheet?",
   "Hello": "Hello",
+  "No": "No",
+  "NoClearData": "No, clear data",
+  "Pause": "Pause",
   "RegisterTime": "Register time",
   "RegisterYourTime": "Register your time!",
   "SetLanguage": "Set language",
   "VacationHours": "Vacation hours",
+  "ViewTimesheets": "View timesheets",
+  "WillDeleteTime": "This will delete your current time, are you sure?",
   "WithStopwatchRecordTime": "With this stopwatch you can start recording your time. Just press start when you start working and stop it when you're done!",
+  "Yes": "Yes",
   "YourProfile": "Your profile"
 }

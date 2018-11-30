@@ -5,8 +5,54 @@
 </ion-header>
 
 
-<ion-content padding>
-  <p>{{ "WithStopwatchRecordTime" | translate }}</p>
-  <h1>{{ date | date: 'HH:mm' }}</h1>
-  <button ion-button full (click)="startStopwatch()">Start</button>
+<ion-content class="background" padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <p class="text-center">{{ "WithStopwatchRecordTime" | translate }}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <h1 class="text-center">{{ (hours < 10 ? '0' : '') + hours }} : {{ (minutes < 10 ? '0' : '') + minutes }} : {{ (seconds < 10 ? '0' : '') + seconds }}</h1>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col col-12>
+        <button *ngIf="!started && !stopped" color="complementary" ion-button full (click)="startStopwatch()" icon-start>
+          <ion-icon name="play"></ion-icon>
+          Start
+        </button>
+        <button *ngIf="paused || stopped" color="complementary" ion-button full (click)="startStopwatch()" icon-start>
+          <ion-icon name="play"></ion-icon>
+          {{ 'Continue' | translate }}
+        </button>
+        <button *ngIf="started && !paused" ion-button full (click)="pauseStopwatch()" icon-start>
+          <ion-icon name="pause"></ion-icon>
+          {{ 'Pause' | translate }}
+        </button>
+        <button *ngIf="started" color="secondary" ion-button full (click)="stopStopwatch()" icon-start>
+          <ion-icon name="square"></ion-icon>
+          Stop
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="stopped">
+      <ion-col col-12>
+        <p [translate]="'DoneWorking'" [translateParams]="{hour: hours, minute: minutes}"></p>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="stopped">
+      <ion-col col-6>
+        <button ion-button color="success" full (click)="addToTimesheet()">
+          {{ 'Yes' | translate }}
+        </button>
+      </ion-col>
+      <ion-col col-6>
+        <button ion-button color="danger" full (click)="noTimesheet()">
+          {{ 'No' | translate }}
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

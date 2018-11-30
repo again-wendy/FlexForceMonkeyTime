@@ -3,9 +3,11 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { BackgroundMode } from '@ionic-native/background-mode';
 import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Push } from '@ionic-native/push';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -16,6 +18,7 @@ import { StopwatchPage } from '../pages/stopwatch/stopwatch';
 import { RegisterTimePage } from '../pages/register-time/register-time';
 import { VacationHoursPage } from '../pages/vacation-hours/vacation-hours';
 import { ProfilePage } from '../pages/profile/profile';
+import { TimesheetsPage } from '../pages/timesheets/timesheets';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '/translations.json');
@@ -28,13 +31,16 @@ export function createTranslateLoader(http: HttpClient) {
     LoginPage,
     StopwatchPage,
     RegisterTimePage,
+    TimesheetsPage,
     VacationHoursPage,
     ProfilePage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      backButtonText: ''
+    }),
     IonicStorageModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -51,6 +57,7 @@ export function createTranslateLoader(http: HttpClient) {
     LoginPage,
     StopwatchPage,
     RegisterTimePage,
+    TimesheetsPage,
     VacationHoursPage,
     ProfilePage
   ],
@@ -58,7 +65,9 @@ export function createTranslateLoader(http: HttpClient) {
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    AuthProvider
+    AuthProvider,
+    BackgroundMode,
+    Push
   ]
 })
 export class AppModule {}

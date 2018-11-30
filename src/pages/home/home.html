@@ -14,7 +14,7 @@
     <ion-row>
       <ion-col col-6>
         <ion-list>
-          <ion-item (click)="goToStopwatch()">
+          <ion-item text-wrap (click)="goToStopwatch()">
             <ion-row>
               <ion-col col-12><ion-icon class="icon" name="stopwatch"></ion-icon></ion-col>
             </ion-row>
@@ -26,7 +26,7 @@
       </ion-col>
       <ion-col col-6>
         <ion-list>
-          <ion-item (click)="goToRegisterTime()">
+          <ion-item text-wrap (click)="goToRegisterTime()">
             <ion-row>
               <ion-col col-12><ion-icon class="icon" name="time"></ion-icon></ion-col>
             </ion-row>
@@ -39,8 +39,20 @@
     </ion-row>
     <ion-row>
       <ion-col col-6>
+        <ion-list> 
+          <ion-item text-wrap (click)="goToTimesheets()">
+            <ion-row>
+              <ion-col col-12><ion-icon class="icon" name="clock"></ion-icon></ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col col-12><h2 class="title">{{ "ViewTimesheets" | translate }}</h2></ion-col>
+            </ion-row>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col col-6>
         <ion-list>
-          <ion-item (click)="goToVacationHours()">
+          <ion-item text-wrap (click)="goToVacationHours()">
             <ion-row>
               <ion-col col-12><ion-icon class="icon" name="calendar"></ion-icon></ion-col>
             </ion-row>
@@ -50,25 +62,19 @@
           </ion-item>
         </ion-list>
       </ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col col-6>
         <ion-list>
-          <ion-item (click)="goToProfile()">
+          <ion-item text-wrap (click)="goToProfile()">
             <ion-row>
-              <ion-col col-12><ion-icon class="icon" name="cog"></ion-icon></ion-col>
+              <ion-col col-12><ion-icon class="icon" name="settings"></ion-icon></ion-col>
             </ion-row>
             <ion-row>
               <ion-col col-12><h2 class="title">{{ "YourProfile" | translate }}</h2></ion-col>
             </ion-row>
           </ion-item>
         </ion-list>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col col-6>
-
-      </ion-col>
-      <ion-col col-6>
-
       </ion-col>
     </ion-row>
   </ion-grid>

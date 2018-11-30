@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Platform, Nav } from 'ionic-angular';
+import { Platform, Nav, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 //import { LoginPage } from '../pages/login/login';
@@ -11,6 +11,11 @@ import { StopwatchPage } from '../pages/stopwatch/stopwatch';
 import { RegisterTimePage } from '../pages/register-time/register-time';
 import { VacationHoursPage } from '../pages/vacation-hours/vacation-hours';
 import { ProfilePage } from '../pages/profile/profile';
+import { Push, PushOptions, PushObject } from '@ionic-native/push';
+import { enviroment } from '../enviroments/enviroment';
+import { TimesheetsPage } from '../pages/timesheets/timesheets';
+
+const senderId = enviroment.senderId;
 
 @Component({
   templateUrl: 'app.html'
@@ -21,9 +26,10 @@ export class MyApp {
 
   menuPages = [
     {title: 'Stopwatch', icon: 'stopwatch', page: StopwatchPage},
-    {title: 'Register time', icon: 'time', page: RegisterTimePage},
-    {title: 'Vacation hours', icon: 'calendar', page: VacationHoursPage},
-    {title: 'Your profile', icon: 'cog', page: ProfilePage},
+    {title: 'MakeTimesheet', icon: 'time', page: RegisterTimePage},
+    {title: 'ViewTimesheets', icon: 'clock', page: TimesheetsPage},
+    {title: 'VacationHours', icon: 'calendar', page: VacationHoursPage},
+    {title: 'YourProfile', icon: 'settings', page: ProfilePage},
   ]
 
   constructor(
@@ -32,7 +38,9 @@ export class MyApp {
     splashScreen: SplashScreen, 
     authProv: AuthProvider,
     translate: TranslateService,
-    storage: Storage
+    storage: Storage,
+    public push: Push,
+    public alertCtrl: AlertController
     ) {
 
     storage.get("lang").then((res) => {
@@ -49,6 +57,8 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      
+      //this.initPushNotification();
 
       // if(authProv.canLogin) {
       //   this.rootPage = HomePage;
@@ -58,8 +68,54 @@ export class MyApp {
     });
   }
 
-  goToPage(page) {
+  goToPage = (page) => {
     this.nav.push(page.page);
+  }
+
+  initPushNotification = () => {
+    const options: PushOptions = {
+      android: {
+        senderID: senderId
+      },
+      ios: {
+        alert: 'true',
+        badge: true,
+        sound: 'true'
+      },
+      browser: {
+        pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+      }
+    }
+    const pushObject: PushObject = this.push.init(options);
+
+    pushObject.on('stopwatchTimer').subscribe((data: any) => {
+      console.log('message -> ' + data.message);
+      //if user using app and push notification comes
+      if (data.additionalData.foreground) {
+        // if application open, show popup
+        let confirmAlert = this.alertCtrl.create({
+          title: 'New Notification',
+          message: data.message,
+          buttons: [{
+            text: 'Ignore',
+            role: 'cancel'
+          }, {
+            text: 'View',
+            handler: () => {
+              //TODO: Your logic here
+              console.log("message: " + data.message);
+              //this.nav.push(DetailsPage, { message: data.message });
+            }
+          }]
+        });
+        confirmAlert.present();
+      } else {
+        //if user NOT using app and push notification comes
+        //TODO: Your logic on click of push notification directly
+        console.log("message: " + data.message);
+        console.log('Push notification clicked');
+      }
+    })
   }
 }
 
