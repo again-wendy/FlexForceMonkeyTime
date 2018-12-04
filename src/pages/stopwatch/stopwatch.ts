@@ -19,6 +19,42 @@ export class StopwatchPage {
   paused: boolean = false;
   total: any;
 
+  assignments: Array<any> = [
+    {
+      name: "FlexForceMonkey",
+      rates: [
+        {
+          id: 0,
+          name: "Development",
+          run: true,
+          quantity: null
+        },
+        {
+          id: 1,
+          name: "Support",
+          run: false,
+          quantity: null
+        },
+        {
+          id: 2,
+          name: "Implementation",
+          run: false,
+          quantity: null
+        }
+      ]
+    }, {
+      name: "Marketing",
+      rates: [
+        {
+          id: 3,
+          name: "Marketing",
+          run: false,
+          quantity: null
+        }
+      ]
+    }
+  ]
+
   constructor(
     private storage: Storage, 
     private translate: TranslateService,

@@ -8,6 +8,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { Push } from '@ionic-native/push';
+import { DatePicker } from '@ionic-native/date-picker';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -19,6 +20,8 @@ import { RegisterTimePage } from '../pages/register-time/register-time';
 import { VacationHoursPage } from '../pages/vacation-hours/vacation-hours';
 import { ProfilePage } from '../pages/profile/profile';
 import { TimesheetsPage } from '../pages/timesheets/timesheets';
+import { TimeIntervalModalPage } from '../pages/timeinterval-modal/timeinterval-modal';
+import { AllowanceModalPage } from '../pages/allowance-modal/allowance-modal';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '/translations.json');
@@ -33,7 +36,9 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterTimePage,
     TimesheetsPage,
     VacationHoursPage,
-    ProfilePage
+    ProfilePage,
+    TimeIntervalModalPage,
+    AllowanceModalPage
   ],
   imports: [
     BrowserModule,
@@ -59,7 +64,9 @@ export function createTranslateLoader(http: HttpClient) {
     RegisterTimePage,
     TimesheetsPage,
     VacationHoursPage,
-    ProfilePage
+    ProfilePage,
+    TimeIntervalModalPage,
+    AllowanceModalPage
   ],
   providers: [
     StatusBar,
@@ -67,7 +74,8 @@ export function createTranslateLoader(http: HttpClient) {
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
     BackgroundMode,
-    Push
+    Push,
+    DatePicker
   ]
 })
 export class AppModule {}

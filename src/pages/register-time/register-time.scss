@@ -6,4 +6,46 @@ page-register-time {
     .text-center {
         text-align: center;
     }
+    .date-list {
+        .item-block {
+            display: inline-block;
+            width: 14.2857142%;
+            padding: 3px;
+            text-align: center;
+            font-size: 1.2rem;
+            border: none;
+            &:last-child {
+                border: none;
+            }
+            &.active {
+                background: $primary;
+                color: white;
+            }
+            .item-inner {
+                padding: 0;
+                border: none;
+                .label {
+                    margin: 6px 0;
+                    .day {
+                        text-transform: uppercase;
+                    }
+                    .date {
+                        font-size: 1.8rem;
+                        font-weight: bold;
+                    }
+                }
+            }
+        }
+    }
+    .assignments {
+        .item {
+            .item-inner {
+                .label {
+                    .quan {
+                        float: right;
+                    }
+                }
+            }
+        }
+    }
 }

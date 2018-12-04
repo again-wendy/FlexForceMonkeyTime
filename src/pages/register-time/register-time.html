@@ -1,18 +1,35 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ "RegisterTime" | translate }}</ion-title>
+    <ion-title>{{ "EnterTime" | translate }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openCalendar()">
+        <ion-icon name="calendar" color="dark"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content class="background">
-  <ion-grid>
-    <ion-row>
-      <ion-col class="text-center" col-12>
-        <h3>{{ "AddYourTime" | translate }}</h3>
-        <h4>{{ currentDay | date: 'mediumDate' }}</h4>
-        <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="currentDay"></ion-datetime>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <ion-list class="date-list">
+    <ion-list-header>
+      {{ currentDay | date: 'LLLL' }}
+    </ion-list-header>
+
+    <ion-item *ngFor="let item of daysOfWeek" [class.active]="item.selected" (click)="changeDate(item.day)"><span class="day">{{ item.day | date: 'EE' }}</span><br /><span class="date">{{ item.day | date: 'd' }}</span></ion-item>
+  </ion-list>
+  <ion-list class="assignments" *ngFor="let item of assignments">
+    <ion-list-header>
+      {{ item.name }}
+    </ion-list-header>
+    <button ion-item *ngFor="let rate of item.rates" (click)="openTimeIntervalModal(rate)">{{ rate.name }} <span class="quan">{{ rate.quantity }}</span></button>
+  </ion-list>
+  <ion-list class="assignments">
+    <ion-list-header>
+      {{ "Allowances" | translate }}
+    </ion-list-header>
+    <button ion-item *ngFor="let line of allowances" (click)="openAllowanceModal(line)">{{ line.name }} <span class="quan">{{ line.price }}</span></button>
+    <button ion-item (click)="addAllowance()">{{ "AddNewAllowance" | translate }}</button>
+  </ion-list>
+  <button ion-button full color="complementary" (click)="save()">{{ "Save" | translate }}</button>
 </ion-content>

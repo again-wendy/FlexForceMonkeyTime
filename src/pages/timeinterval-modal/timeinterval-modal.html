@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">{{ "Close" | translate }}</button>
+    </ion-buttons>
+    <ion-title>{{ "EnterTime" | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="background" padding>
+  <h3>{{ rate.name }}</h3>
+  <ion-list>
+    <ion-item>
+      <ion-label>{{ "Quantity" | translate }}</ion-label>
+      <ion-input type="number" [(ngModel)]="rate.quantity" name="quantity"></ion-input>
+    </ion-item>
+  </ion-list>
+  <button ion-button (click)="dismiss()">{{ "Save" | translate }}</button>
+</ion-content>

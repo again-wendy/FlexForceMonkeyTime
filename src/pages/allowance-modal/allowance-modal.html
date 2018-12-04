@@ -1,0 +1,27 @@
+<ion-header>
+
+    <ion-navbar>
+        <ion-buttons start>
+          <button ion-button (click)="cancel()">{{ "Close" | translate }}</button>
+        </ion-buttons>
+        <ion-title>{{ "AddNewAllowance" | translate }}</ion-title>
+      </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="background" padding>
+    <ion-list>
+      <ion-item>
+        <ion-label>{{ "Name" | translate }}</ion-label>
+        <ion-select [(ngModel)]="line.name" name="name">
+          <ion-option *ngFor="let item of allowances" [value]="item">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ "Price" | translate }}</ion-label>
+        <ion-input type="number" [(ngModel)]="line.price" name="price"></ion-input>
+      </ion-item>
+    </ion-list>
+    <button ion-button (click)="dismiss()">{{ "Save" | translate }}</button>
+</ion-content>

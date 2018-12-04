@@ -7,7 +7,7 @@ import { IUser } from '../../interfaces/user';
 import { Observable } from 'rxjs/Observable';
 import { IChangePassword } from '../../interfaces/changePassword';
 import { IEmail } from '../../interfaces/email';
-import { ILogin } from '../../interfaces/login';
+//import { ILogin } from '../../interfaces/login';
 
 const authUrl = enviroment.authUrl;
 
@@ -17,13 +17,16 @@ export class AuthProvider {
   url: string;
   canLogin: boolean = false;
 
-  constructor(private http: HttpClient, private storage: Storage) {}
+  constructor(
+    private http: HttpClient, 
+    private storage: Storage
+  ) {}
 
   authorize() {
-    let authorizationUrl = "https://auth-test.flexforcemonkey.com/connect/token";
-    let client_id = 'mvc';
+    let authorizationUrl = "https://auth-test.flexforcemonkey.com/connect/authorize";
+    let client_id = 'AppClient';
     let redirect_uri = window.location.origin + '/authorized';
-    let response_type = 'id_token token';
+    let response_type = 'code';
     let scope = 'openid profile roles apiScope';
     let nonce = 'N' + Math.random() + '' + Date.now();
     let state = Date.now() + '' + Math.random();
@@ -41,9 +44,13 @@ export class AuthProvider {
       "state=" + encodeURI(state);
   }
 
-  login = (user: ILogin): Observable<Partial<any>> => {
+  login = () => {
     this.authorize();
-    return this.http.post(this.url, user);
+    this.http.get(this.url).subscribe(data => console.log(data));
+  }
+
+  logout = () => {
+    //this.oidcSecurityService.logoff();
   }
 
   registerMobileUser = (user: IUser): Observable<Partial<any>> => {
