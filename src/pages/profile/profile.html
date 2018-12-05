@@ -1,18 +1,21 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>{{ 'YourProfile' | translate }}</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>{{ 'YourProfile' | translate }}</ion-title>
+    </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
-  <ion-list>
-    <ion-item>
-      <ion-label>{{ 'SetLanguage' | translate }}</ion-label>
-      <ion-select [(ngModel)]="lang" (ionChange)="switchLang()">
-        <ion-option value="en">🇬🇧 English</ion-option>
-        <ion-option value="nl">🇳🇱 Nederlands</ion-option>
-      </ion-select>
-    </ion-item>
-  </ion-list>
+<ion-content class="background" padding>
+    <ion-list>
+        <ion-item>
+            <ion-label>{{ 'SetLanguage' | translate }}</ion-label>
+            <ion-select [(ngModel)]="lang" (ionChange)="switchLang()">
+                <ion-option value="en">🇬🇧 English</ion-option>
+                <ion-option value="nl">🇳🇱 Nederlands</ion-option>
+            </ion-select>
+        </ion-item>
+        <button ion-item (click)="changeFirstName()">{{ "FirstName" | translate }} <span class="right">{{ firstName }}</span></button>
+        <button ion-item (click)="changeLastName()">{{ "LastName" | translate }} <span class="right">{{ lastName }}</span></button>
+        <ion-item>Email <span class="right">{{ email }}</span></ion-item>
+    </ion-list>
 </ion-content>

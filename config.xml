@@ -86,5 +86,6 @@
     <plugin name="phonegap-plugin-push" spec="^2.2.3" />
     <plugin name="cordova-plugin-datepicker" spec="^0.9.3" />
     <engine name="ios" spec="4.5.5" />
-    <engine name="android" spec="7.0.0" />
+    <engine name="android" spec="^7.1.4" />
+    <engine name="browser" spec="5.0.4" />
 </widget>

@@ -23,9 +23,9 @@ export class AuthProvider {
   ) {}
 
   authorize() {
-    let authorizationUrl = "https://auth-test.flexforcemonkey.com/connect/authorize";
+    let authorizationUrl = "http://localhost:8100/auth-api";
     let client_id = 'AppClient';
-    let redirect_uri = window.location.origin + '/authorized';
+    let redirect_uri = "http://localhost:8100";
     let response_type = 'code';
     let scope = 'openid profile roles apiScope';
     let nonce = 'N' + Math.random() + '' + Date.now();

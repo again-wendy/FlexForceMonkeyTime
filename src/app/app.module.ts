@@ -22,6 +22,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { TimesheetsPage } from '../pages/timesheets/timesheets';
 import { TimeIntervalModalPage } from '../pages/timeinterval-modal/timeinterval-modal';
 import { AllowanceModalPage } from '../pages/allowance-modal/allowance-modal';
+import { TabsPage } from '../pages/tabs/tabs';
+import { AuthtestProvider } from '../providers/authtest/authtest';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '/translations.json');
@@ -38,7 +40,8 @@ export function createTranslateLoader(http: HttpClient) {
     VacationHoursPage,
     ProfilePage,
     TimeIntervalModalPage,
-    AllowanceModalPage
+    AllowanceModalPage,
+    TabsPage
   ],
   imports: [
     BrowserModule,
@@ -66,16 +69,19 @@ export function createTranslateLoader(http: HttpClient) {
     VacationHoursPage,
     ProfilePage,
     TimeIntervalModalPage,
-    AllowanceModalPage
+    AllowanceModalPage,
+    TabsPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthProvider,
+    AuthtestProvider,
     BackgroundMode,
     Push,
-    DatePicker
+    DatePicker,
+    AuthtestProvider
   ]
 })
 export class AppModule {}

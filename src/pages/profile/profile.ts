@@ -10,6 +10,9 @@ import { TranslateService } from '@ngx-translate/core';
 export class ProfilePage {
 
   lang: string;
+  firstName: string = "Wendy";
+  lastName: string = "Dimmendaal";
+  email: string = "wendy.dimmendaal@again.nl"
 
   constructor(private translate: TranslateService) {
     this.lang = translate.getDefaultLang();
@@ -17,6 +20,14 @@ export class ProfilePage {
 
   switchLang() {
     this.translate.use(this.lang);
+  }
+
+  changeFirstName = () => {
+
+  }
+
+  changeLastName = () => {
+    
   }
 
 }

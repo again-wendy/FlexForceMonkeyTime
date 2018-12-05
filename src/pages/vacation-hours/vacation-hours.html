@@ -1,18 +1,14 @@
-<!--
-  Generated template for the VacationHoursPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-    <ion-title>vacation-hours</ion-title>
+    <ion-title>{{ "YourVacationHours" | translate }}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content class="background" padding>
+  <ion-list class="vacation-hours">
+    <ion-item>{{ "Total" | translate }} <span class="right">244</span></ion-item>
+    <ion-item>{{ "HoursLeft" | translate }} <span class="right">80</span></ion-item>
+    <ion-item>{{ "Approved" | translate }} <span class="right">160</span></ion-item>
+    <ion-item>{{ "Unapproved" | translate }} <span class="right">4</span></ion-item>
+  </ion-list>
 </ion-content>

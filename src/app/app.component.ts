@@ -2,8 +2,8 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-//import { LoginPage } from '../pages/login/login';
-import { AuthProvider } from '../providers/auth/auth';
+import { LoginPage } from '../pages/login/login';
+//import { AuthProvider } from '../providers/auth/auth';
 import { HomePage } from '../pages/home/home';
 import { TranslateService } from '@ngx-translate/core';
 import { Storage } from '@ionic/storage';
@@ -14,6 +14,7 @@ import { ProfilePage } from '../pages/profile/profile';
 import { Push, PushOptions, PushObject } from '@ionic-native/push';
 import { enviroment } from '../enviroments/enviroment';
 import { TimesheetsPage } from '../pages/timesheets/timesheets';
+import { AuthtestProvider } from '../providers/authtest/authtest';
 
 const senderId = enviroment.senderId;
 
@@ -22,7 +23,7 @@ const senderId = enviroment.senderId;
 })
 export class MyApp {
   @ViewChild(Nav) nav;
-  rootPage:any = HomePage;
+  rootPage:any;
 
   menuPages = [
     {title: 'Stopwatch', icon: 'stopwatch', page: StopwatchPage},
@@ -36,9 +37,9 @@ export class MyApp {
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen, 
-    authProv: AuthProvider,
     translate: TranslateService,
     storage: Storage,
+    authProv: AuthtestProvider,
     public push: Push,
     public alertCtrl: AlertController
     ) {
@@ -58,13 +59,13 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       
-      //this.initPushNotification();
+      if(authProv.isLoggedIn()) {
+        this.rootPage = HomePage;
+      } else {
+        this.rootPage = LoginPage;
+      }
 
-      // if(authProv.canLogin) {
-      //   this.rootPage = HomePage;
-      // } else {
-      //   this.rootPage = LoginPage;
-      // }
+      //this.initPushNotification();
     });
   }
 
