@@ -2,7 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, Nav, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-import { LoginPage } from '../pages/login/login';
+//import { LoginPage } from '../pages/login/login';
 //import { AuthProvider } from '../providers/auth/auth';
 import { HomePage } from '../pages/home/home';
 import { TranslateService } from '@ngx-translate/core';
@@ -23,7 +23,7 @@ const senderId = enviroment.senderId;
 })
 export class MyApp {
   @ViewChild(Nav) nav;
-  rootPage:any;
+  rootPage:any = HomePage;
 
   menuPages = [
     {title: 'Stopwatch', icon: 'stopwatch', page: StopwatchPage},
@@ -59,11 +59,11 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       
-      if(authProv.isLoggedIn()) {
-        this.rootPage = HomePage;
-      } else {
-        this.rootPage = LoginPage;
-      }
+      // if(authProv.isLoggedIn()) {
+      //   this.rootPage = HomePage;
+      // } else {
+      //   this.rootPage = LoginPage;
+      // }
 
       //this.initPushNotification();
     });

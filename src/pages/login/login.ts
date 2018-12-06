@@ -27,9 +27,9 @@ export class LoginPage {
   }
 
   submitForm() {
-    this.authProv.startAuthentication().then((user) => {
-      console.log(user);
-    });
+    // this.authProv.startAuthentication().then((user) => {
+    //   console.log(user);
+    // });
   }
 
 }
